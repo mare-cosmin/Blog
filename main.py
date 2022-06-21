@@ -14,7 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = config("APPKEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
@@ -84,7 +84,6 @@ def get_all_posts():
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
-    print(config("APPKEY"))
     form = RegisterForm()
     if form.validate_on_submit():
 
